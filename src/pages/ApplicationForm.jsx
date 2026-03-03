@@ -61,7 +61,7 @@ export default function ApplicationForm() {
     if (!confirmations.manuals || !confirmations.hierarchy || !confirmations.rules || !formData.role) return;
     setIsSubmitting(true);
 
-    const webhookUrl = "https://discord.com/api/webhooks/1478392909459099658/WqghWivrOwIPyot_t3P-fTbcz9oM_A9ugRIGaN5oQF50EioMR_mB8O92QIptWRKf37QR";
+    const webhookUrl = "https://discord.com/api/webhooks/1478402690508914872/Tc5x3A8oAtPv9qctyoX1Q-wBIiw_sxkMNs1lkEPBzda-zwK2NBmo9O6fm2UfdAGkfdqL";
 
     const questionsUsed = roleQuestions[formData.role];
     const embedColor = 2829617; // Cor #2B2D31 (Fundo exato do Discord para ficar invisível)
