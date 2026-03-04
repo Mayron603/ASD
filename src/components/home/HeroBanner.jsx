@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroBanner() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950">
       
       {/* --- VÍDEO DE FUNDO --- */}
       <video
@@ -14,61 +14,67 @@ export default function HeroBanner() {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-60 scale-105"
       >
         <source src="/video.mp4" type="video/mp4" />
         Seu navegador não suporta vídeos.
       </video>
 
-      {/* Camada de brilho/escurecimento para manter o contraste do texto */}
-      <div className="absolute inset-0 bg-slate-950/70 z-10" />
+      {/* --- OVERLAYS CINEMATOGRÁFICOS --- */}
+      {/* Overlay de cor base */}
+      <div className="absolute inset-0 bg-slate-950/40 z-10" />
       
-      {/* Brilhos radiais (mantidos para dar profundidade ao vídeo) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-amber-500/5 blur-3xl z-10" />
-      
+      {/* Gradiente Radial (Escurece as bordas para focar no centro) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_100%)] z-10" />
+
       <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 mb-8 backdrop-blur-sm">
-            <Shield className="w-4 h-4 text-amber-400" />
-            <span className="text-amber-300 text-sm font-medium tracking-widest uppercase">Divisão de Suporte Aéreo</span>
+          {/* Badge com Glassmorphism e Animação de Pulso */}
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-amber-500/20 bg-white/5 backdrop-blur-xl mb-10 shadow-2xl">
+            <Shield className="w-4 h-4 text-amber-500 animate-pulse" />
+            <span className="text-amber-400 text-xs font-bold tracking-[0.4em] uppercase">
+              Divisão de Suporte Aéreo
+            </span>
           </div>
 
-          {/* Title */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tight leading-none mb-6">
-            <span className="block">ASD</span>
-            <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-slate-400 mt-3 tracking-[0.2em]">
-              AIR SUPPORT DIVISION
-            </span>
+          {/* Title - Estilo Moderno/Militar */}
+          <h1 className="text-7xl md:text-9xl font-black text-white tracking-tighter leading-none mb-4">
+            ASD
           </h1>
+          <p className="text-sm md:text-base lg:text-lg font-light text-slate-400 tracking-[0.6em] uppercase mb-12">
+            Air Support Division
+          </p>
 
-          {/* Slogan */}
-          <p className="text-lg md:text-xl text-amber-400/90 font-medium tracking-wide mb-4 italic">
+          {/* Slogan com destaque em itálico */}
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-lg md:text-xl text-amber-400/90 font-medium tracking-wide mb-12 italic"
+          >
             "Dominando os céus. Protegendo o solo."
-          </p>
-          
-          <p className="text-slate-200 text-base md:text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
-            A ASD é a divisão aérea de elite responsável pelo patrulhamento, apoio tático, 
-            monitoramento estratégico e operações de resgate. Somos a linha de defesa que 
-            opera acima de tudo.
-          </p>
+          </motion.p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* CTA Buttons com efeitos de Hover */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               to={createPageUrl('ApplicationForm')}
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg transition-all duration-300 text-sm tracking-widest uppercase shadow-lg shadow-amber-500/20"
+              className="group relative px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-sm transition-all duration-300 uppercase tracking-widest overflow-hidden hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(245,158,11,0.3)]"
             >
-              Ingressar na ASD
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span className="relative z-10 flex items-center gap-2">
+                Ingressar na ASD
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
             </Link>
+
             <Link
               to={createPageUrl('Manuals')}
-              className="inline-flex items-center gap-2 px-8 py-4 border border-slate-600 hover:border-slate-400 text-slate-300 hover:text-white font-medium rounded-lg transition-all duration-300 text-sm tracking-widest uppercase backdrop-blur-md"
+              className="px-10 py-4 border border-white/20 bg-white/5 backdrop-blur-md text-white font-bold rounded-sm hover:bg-white/10 transition-all duration-300 uppercase tracking-widest hover:border-white/40"
             >
               Acessar Manuais
             </Link>
@@ -76,7 +82,17 @@ export default function HeroBanner() {
         </motion.div>
       </div>
 
-      {/* Bottom fade - Transição suave para o resto da página */}
+      {/* --- INDICADOR DE SCROLL ANIMADO --- */}
+      <motion.div 
+        animate={{ y: [0, 12, 0] }}
+        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-40 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] text-white tracking-[0.3em] uppercase rotate-90 mb-8">Scroll</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-amber-500 to-transparent" />
+      </motion.div>
+
+      {/* Gradiente de transição para a próxima seção */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-950 to-transparent z-20" />
     </section>
   );
