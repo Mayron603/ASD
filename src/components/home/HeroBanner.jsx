@@ -102,19 +102,21 @@ export default function HeroBanner() {
         </motion.div>
       </div>
 
-      {/* INDICADOR DE SCROLL - AGORA CENTRALIZADO PERFEITAMENTE */}
+      {/* INDICADOR DE SCROLL - ALINHAMENTO MILIMÉTRICO */}
       <motion.div 
         animate={{ y: [0, 12, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-40 flex flex-col items-center gap-4 pointer-events-none"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-40 flex flex-col items-center pointer-events-none"
       >
-        <span 
-          style={{ writingMode: 'vertical-rl' }} 
-          className="text-[10px] text-white tracking-[0.3em] uppercase"
-        >
-          Scroll
-        </span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-amber-500 to-transparent" />
+        {/* Container fixo para isolar a rotação e garantir o centro absoluto */}
+        <div className="w-8 h-16 flex items-center justify-center mb-2">
+          <span className="text-[10px] text-white tracking-[0.3em] uppercase rotate-90 ml-[0.3em]">
+            Scroll
+          </span>
+        </div>
+        
+        {/* Linha (Mude emerald para amber se estiver no projeto da ASD) */}
+        <div className="w-[1px] h-12 bg-gradient-to-b from-emerald-500 to-transparent" />
       </motion.div>
 
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-950 to-transparent z-20 pointer-events-none" />
