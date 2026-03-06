@@ -49,7 +49,6 @@ export default function HeroBanner() {
         }} 
       />
 
-      {/* Conteúdo alterado para z-40 para ficar acima de todos os overlays */}
       <div className="relative z-40 max-w-5xl mx-auto px-6 text-center mt-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,13 +102,18 @@ export default function HeroBanner() {
         </motion.div>
       </div>
 
-      {/* INDICADOR DE SCROLL */}
+      {/* INDICADOR DE SCROLL - AGORA CENTRALIZADO PERFEITAMENTE */}
       <motion.div 
         animate={{ y: [0, 12, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-40 flex flex-col items-center gap-2 pointer-events-none"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 opacity-40 flex flex-col items-center gap-4 pointer-events-none"
       >
-        <span className="text-[10px] text-white tracking-[0.3em] uppercase rotate-90 mb-8">Scroll</span>
+        <span 
+          style={{ writingMode: 'vertical-rl' }} 
+          className="text-[10px] text-white tracking-[0.3em] uppercase"
+        >
+          Scroll
+        </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-amber-500 to-transparent" />
       </motion.div>
 
